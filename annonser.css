@@ -11,38 +11,23 @@ body {
     font-family: 'Times New Roman', Times, serif;
     line-height: 1.6;
     max-width: 100vw;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
     min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 *{
 margin: 0;
 }
-
-body {
-
-}
+/*gemensam header*/
  header nav {
-
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
   justify-content: space-evenly;
   min-height: 50px;
- 
-
   background-color: rgb(49, 68, 194);
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex: 1;
 }
 
 li {
@@ -55,21 +40,21 @@ a:link {
   font-size: x-large;
 }
 
-a:visited {
+header nav a:visited {
   color: white;
   text-decoration: none;
 }
 
 
-a:hover {
+header nav a:hover {
   color: black;
   text-decoration: underline;
 }
 
-a:active {
+/*a:active {
   color: white;
   text-decoration: underline;
-}
+}*/
 
 footer {
   min-height: 50px;
