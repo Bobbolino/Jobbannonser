@@ -9,6 +9,7 @@ html {
 }
 body {
     font-family: 'Times New Roman', Times, serif;
+    font-size: 16px ;
     line-height: 1.6;
     max-width: 100vw;
     min-height: 100vh;
@@ -30,11 +31,7 @@ margin: 0;
   background-color: rgb(49, 68, 194);
 }
 
-li {
-  margin: auto;
-}
-
-a:link {
+header nav a:link {
   color: white;
   text-decoration: none;
   font-size: x-large;
@@ -45,18 +42,30 @@ header nav a:visited {
   text-decoration: none;
 }
 
-
 header nav a:hover {
   color: black;
   text-decoration: underline;
 }
-
-/*a:active {
-  color: white;
-  text-decoration: underline;
-}*/
+h1 {
+  font-size: 14px;
+}
 
 footer {
   min-height: 50px;
   background-color: rgb(49, 68, 194);
+  bottom: 0;
+}
+.stad .yrke{
+  display: flex;
+  text-align: left;
+  justify-content: right;
+  border-color: bisque;
+  background-color:blanchedalmond;
+  border: 12px;
+}
+
+
+
+@media (max-width:768px){
+
 }
