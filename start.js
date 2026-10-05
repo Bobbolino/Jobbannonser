@@ -6,7 +6,7 @@ const registerForm = document.getElementById("registerForm");
 
 
 
-// REGISTRERA
+
 
 registerForm.addEventListener("submit", function(event) {
 
