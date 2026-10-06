@@ -3,17 +3,17 @@ const jobs=[
         id: 1,
         title: "Systemsäkerhetsingenjör inom Funchtional Safety",
         företag: "Agile Resources AB",
-        ort: "Linköping",
-        kategori: " IT Säkerhetsingenjör",
+        location: "Linköping",
+        kategori: "IT Säkerhetsingenjör",
         Detalj : "Arbetar med systemsäkerhet och Functional Safety."
     },
     {
         id: 2,
-        title: "Senior Accounting Manager-Centraleuropa",
+        title: "Principal ciso consultant till mneemonic",
         företag: "Agile Resources AB",
         location: "Göteborg",
-        kategori: "Maneger",
-        detalj: "Ansvarar för ekonomisk styrning och redovisning."
+        kategori: "IT-säkerhetsanvarig",
+        detalj: "Ansvarar för säkerhetsansvarig."
     },
     {
       id: 3,
@@ -21,14 +21,14 @@ const jobs=[
         företag: "lovable Labs Sweden AB",
         location: "Stockholm",
         kategori: "IT-säkerhetstekniker",
-        detalj: "."   
+        detalj: "Säkerhetstekniker "   
     },
     {
     id: 4,
         title: "Technical Solutions Engineer",
         företag: "Academic Work Sweden AB",
         location: "Stockholm",
-        kategori: "Supporttekniker",
+        kategori: "IT-Supporttekniker",
         detalj: "Avancerad teknisk support."   
     },
     {
@@ -36,21 +36,21 @@ const jobs=[
         title: "IT-supporttekniker till Quest consulting.",
         företag: "Quest consulting Sverige AB",
         location: "Stockholm",
-        kategori: "Supportttekniker",
+        kategori: "IT-Supportttekniker",
         detalj: "Rollen som support-tekniker innebär primärt att ta emot och lösa incidenter och beställningar."  
     },
     {id: 6,
         title: "Säkerhetsskyddsspecialist till myndighet",
         företag: "Future People AB",
         location: "Stockholm",
-        kategori: "Säkerhetsadministratör IT",
+        kategori: "IT-Säkerhetsadministratör",
         detalj: "en säkerhetsskyddsspecialist till vår kund i Sundbyberg."  
     },
     {
     id: 7,
         title: "Säkerhetsanalytiker",
         företag: "Uppsala Universitet",
-        location: "Uppsara",
+        location: "Uppsala",
         kategori: "IT-säkerhetstekniker",
         detalj: "På Säkerhetsavdelningen har vi bred kompetens och ett brinnande intresse inom området"  
     },
@@ -59,17 +59,17 @@ const jobs=[
         title: "Enhetschef It-arkitektur och it-säkerhet till Sveriges lantbruksuniversitet",
         företag: "lSveriges lantbruksuniversitet",
         location: "Uppsala",
-        kategori: "IT-säkerhetsansvarigr",
+        kategori: "IT-säkerhetsansvarig",
         detalj: "Som enhetschef har du personal- och budgetansvar för enheten och ingår i ledningsgruppen för IT-avdelningen."  
     }
 ]
 
-const jobblista = document.getElementById("jobb-lista");
+const jobblista = document.querySelector("#jobb-lista"); //väljer id jobb lista för att lägg till 8 jobb 
 function visajobb(alljobb){
-    jobblista.innerHTML=""; // ändra innehåll i jobblista
+    jobblista.innerHTML=""; //lägg till innehåll i jobblista
 
     alljobb.forEach(jobb => {
-        jobblista.innerHTML +=
+        jobblista.innerHTML += `
         <Selection class ="jobbobjekt">
             <h2>${jobb.title}</h2>
             <p>${jobb.företag}</p>
@@ -78,8 +78,31 @@ function visajobb(alljobb){
             <p>${jobb.detalj}</p>
             <buttom>Spara annons</buttom>
         </Selection>
-
+        `;
 
     });
 }
-visajobb(jobs);
+visajobb(jobs);// ser 8 jobb i webbsida
+
+// filter ort och yrke
+const valjord = document.querySelector("#ort");
+const valjyrke = document.querySelector("#yrke");
+
+function jobbsfilter(){ //skapa jobbsfilter function
+    const choosestad= valjord.value;
+    const chooseyrke= valjyrke.value;
+
+    const jobbsfilter= jobs.filter(jobb => {
+
+        const passaort=
+            choosestad ==="" || jobb.location === choosestad; //väljer location = stad
+        const passayrke =
+            chooseyrke ==="" || jobb.kategori === chooseyrke; // väljer yrke 
+
+        return passaort && passayrke;  // väljer ort och yrke sent få title jobb som matcha 
+});
+    visajobb(jobbsfilter);
+    
+}
+valjord.addEventListener("change",jobbsfilter);
+valjyrke.addEventListener("change", jobbsfilter);
