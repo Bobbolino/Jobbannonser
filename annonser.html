@@ -18,14 +18,12 @@
     <main> 
          <h2>Lediga jobb i Sverige</h2>
          <p>Flitera på yrker, Stad eller län</p>
-
-        <p id="spara"><a href="spara.html">Spara annonser</a></p>
     
-            <select id="ort" namn="land">
+            <select id="ort">
                 <option value="">All orter</option>
                 <option value="Linköping">Linköping</option>
                 <option value="Göteborg">Göteborg</option>
-                <option value="stockholm">Stockholm</option>
+                <option value="Stockholm">Stockholm</option>
                 <option value="Gotland">Gotland</option>
                  <option value="Uppsala">Uppsala</option>
             </select>
@@ -40,10 +38,10 @@
                  <option value="IT-säkerhetsansvarig">IT-säkerhetsansvarig</option>
             </select>
         </section>
-       
         </form>
+        <button click="sparasjobb(${jobb.id})" >Spara annos</button>
         <div id="jobb-lista"></div> <!--visa 8 jobb-->
-        <div id="jobb-detaljvy"></div><!--visa i varige jobb detalj-->
+        <div id="jobb-detalj"></div><!--visa i varige jobb detalj-->
     </main>
 
     <footer>  </footer>

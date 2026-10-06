@@ -5,7 +5,7 @@ const jobs=[
         företag: "Agile Resources AB",
         location: "Linköping",
         kategori: "IT Säkerhetsingenjör",
-        Detalj : "Arbetar med systemsäkerhet och Functional Safety."
+        detalj : "Arbetar med systemsäkerhet och Functional Safety."
     },
     {
         id: 2,
@@ -68,7 +68,7 @@ const jobblista = document.querySelector("#jobb-lista"); //väljer id jobb lista
 function visajobb(alljobb){
     jobblista.innerHTML=""; //lägg till innehåll i jobblista
 
-    alljobb.forEach(jobb => {
+    alljobb.forEach(jobb => { // allajob kalla för jobb och har samma innehåll
         jobblista.innerHTML += `
         <Selection class ="jobbobjekt">
             <h2>${jobb.title}</h2>
@@ -76,7 +76,7 @@ function visajobb(alljobb){
             <p>${jobb.location}</p>
             <p>${jobb.kategori}</p>
             <p>${jobb.detalj}</p>
-            <buttom>Spara annons</buttom>
+            <button onclick="sparasjobb(${jobb.id})">Spara annons</button>
         </Selection>
         `;
 
@@ -84,7 +84,7 @@ function visajobb(alljobb){
 }
 visajobb(jobs);// ser 8 jobb i webbsida
 
-// filter ort och yrke
+// filter ort och yrke för när man väljer ort och yrke , kommer ett jobb till resultat
 const valjord = document.querySelector("#ort");
 const valjyrke = document.querySelector("#yrke");
 
@@ -106,3 +106,39 @@ function jobbsfilter(){ //skapa jobbsfilter function
 }
 valjord.addEventListener("change",jobbsfilter);
 valjyrke.addEventListener("change", jobbsfilter);
+
+
+//spara ansöker ilocalstorage
+
+let sparasannons =[];
+document.addEventListener("DOMContentLoaded",(e)=> {
+    loadFormLocalStorage();
+
+});
+
+function loadFormLocalStorage(){ // html sidan är färdigladdad kör loadFormLocalStorage
+    const LocalStorageId= localStorage.getItem("sparasannons")
+    
+    if(LocalStorageId){
+        const jsDate = JSON.parse(LocalStorageId)// för text som java-array
+        jsDate.forEach((id)=>{ // går igenom varje id
+            sparasannons.push(id)// spara i sparasannons
+    });
+    }else {
+        console.log("Ingen sparde annonser hittades")
+    }
+}
+    function sparasjobb(id) {
+    if (!sparasannons.includes(id)) {
+        sparasannons.push(id);
+
+        localStorage.setItem(
+            "sparasannons",
+            JSON.stringify(sparasannons)
+        );
+
+        console.log("Annonsen sparades!");
+    } else {
+        console.log("Annonsen är redan sparad!");
+    }
+}
