@@ -65,7 +65,11 @@ const jobs=[
 ]
 
 const jobblista = document.querySelector("#jobb-lista"); //väljer id jobb lista för att lägg till 8 jobb 
+
 function visajobb(alljobb){
+    if (!jobblista){
+        return;
+    }
     jobblista.innerHTML=""; //lägg till innehåll i jobblista
 
     alljobb.forEach(jobb => { // allajob kalla för jobb och har samma innehåll
@@ -76,6 +80,7 @@ function visajobb(alljobb){
             <p>${jobb.location}</p>
             <p>${jobb.kategori}</p>
             <p>${jobb.detalj}</p>
+           
             <button onclick="sparasjobb(${jobb.id})">Spara annons</button>
         </Selection>
         `;
@@ -104,16 +109,17 @@ function jobbsfilter(){ //skapa jobbsfilter function
     visajobb(jobbsfilter);
     
 }
+if(valjord && valjyrke){
 valjord.addEventListener("change",jobbsfilter);
 valjyrke.addEventListener("change", jobbsfilter);
-
+}
 
 //spara ansöker ilocalstorage
 
 let sparasannons =[];
 document.addEventListener("DOMContentLoaded",(e)=> {
     loadFormLocalStorage();
-
+//localStorage.removeItem("sparasannons"); för rensar de jobb som har sparat
 });
 
 function loadFormLocalStorage(){ // html sidan är färdigladdad kör loadFormLocalStorage
@@ -142,3 +148,31 @@ function loadFormLocalStorage(){ // html sidan är färdigladdad kör loadFormLo
         console.log("Annonsen är redan sparad!");
     }
 }
+
+// visa de sparade jobb
+function visasparadejobb(){
+    const sparatjobb= document.querySelector("#sparasjobb");//sparasjobb i spara.html
+
+    if(!sparatjobb){
+        return;
+    }
+    const sparadeId =JSON.parse(
+        localStorage.getItem("sparasannons")
+    ) || [];
+
+    sparadeId.forEach(id => {
+        const jobb = jobs.find(jobb => jobb.id === id);
+        if(jobb){
+            sparatjobb.innerHTML += `
+            <section class ="jobbobjekt">
+             <h2>${jobb.title}</h2>
+             <p>${jobb.företag}</p>
+             <p>${jobb.location}</p>
+             <p>${jobb.kategori}</p>
+             <p>${jobb.detalj}</p>
+            </section>
+            `;
+        }
+    });
+}
+visasparadejobb();
