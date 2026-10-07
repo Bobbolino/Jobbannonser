@@ -4,7 +4,7 @@ const jobs=[
         title: "Systemsäkerhetsingenjör inom Funchtional Safety",
         företag: "Agile Resources AB",
         location: "Linköping",
-        kategori: "IT Säkerhetsingenjör",
+        kategori: "IT-Säkerhetsingenjör",
         detalj : "Arbetar med systemsäkerhet och Functional Safety.",
         Omfattning:"Heltid",
         Varaktighet:"Tills vidare",
@@ -24,7 +24,7 @@ const jobs=[
         title: "Systemsäkerhetsingenjör",
         företag: "UMS Skeldar Sweden AB",
         location: "Linköping",
-        kategori: "IT-säkerhetsingenjör",
+        kategori: "IT-Säkerhetsingenjör",
         detalj: "Ansvarar för säkerhetsansvarig.",
         Omfattning:"Heltid",
         Varaktighet:"Tills vidare",
@@ -41,7 +41,7 @@ const jobs=[
         title: "Security Engineer, Corporate",
         företag: "lovable Labs Sweden AB",
         location: "Stockholm",
-        kategori: "IT-säkerhetstekniker",
+        kategori: "IT-Säkerhetstekniker",
         detalj: "Säkerhetstekniker " ,
         Omfattning:"Heltid",
         Varaktighet: "Tills vidare",
@@ -62,7 +62,7 @@ const jobs=[
         title: "Technical Solutions Engineer",
         företag: "Academic Work Sweden AB",
         location: "Stockholm",
-        kategori: "IT-Supporttekniker",
+        kategori: "IT-Supportttekniker",
         detalj: "Avancerad teknisk support.",   
         Omfattning: "heltid",
         Varaktighet: "6 månader eller längre",
@@ -104,9 +104,9 @@ const jobs=[
         detalj: "en säkerhetsskyddsspecialist till vår kund i Sundbyberg.",
         Omfattning: "Hettid",
         Varaktighet: "6 månade eller längre",
-        Anställningsform: `Tillvidare eller tidsbegränsad anställning",
-        Omjobbet:"Vi är specialister inom rekrytering och bemanning, 
-        och vårt fokus är enkelt: att matcha rätt person med rätt uppdrag  och skapa långsiktigt värde för både våra konsulter och kunder.
+        Anställningsform: "Tillvidare eller tidsbegränsad anställning",
+        Omjobbet:`Vi är specialister inom rekrytering och bemanning, ch vårt fokus är enkelt: att matcha rätt person med rätt 
+        uppdrag och skapa långsiktigt värde för både våra konsulter och kunder.
         Det är också därför vi är ett av de mest uppskattade konsultbolagen i branschen.`,
         Följande:"Mins 5 år arbetslivserfarenhet af systematiskt. Mins 5 ärs arbetsliveserfarenhet av analytiskt arbet inom rarmen.",
         Arbetsplatsen: "Future People Drottninggatan 32 11151 StockholmStockholms Kommun",
@@ -118,7 +118,7 @@ const jobs=[
         title: "Säkerhetsanalytiker",
         företag: "Uppsala Universitet",
         location: "Uppsala",
-        kategori: "IT-säkerhetstekniker",
+        kategori: "IT-Säkerhetstekniker",
         detalj: "På Säkerhetsavdelningen har vi bred kompetens och ett brinnande intresse inom området",  
         Omfattning:"Heltid",
         Varaktighet:"Tills vidare",
@@ -137,7 +137,7 @@ const jobs=[
         title: "Enhetschef It-arkitektur och it-säkerhet till Sveriges lantbruksuniversitet",
         företag: "Sveriges lantbruksuniversitet",
         location: "Uppsala",
-        kategori: "IT-säkerhetsansvarig",
+        kategori: "IT-Säkerhetsansvarig",
         detalj: "Som enhetschef har du personal- och budgetansvar för enheten och ingår i ledningsgruppen för IT-avdelningen.",
         Omfattning: "Heltid",
         Varaktighet:"Tills vidare",
@@ -217,27 +217,22 @@ valjord.addEventListener("change",jobbsfilter);
 valjyrke.addEventListener("change", jobbsfilter);
 }
 
-//spara ansöker ilocalstorage
+//spara jobbannonser och ta bort i localstorage
 
 let sparasannons =[];
-document.addEventListener("DOMContentLoaded",(e)=> {
-    loadFormLocalStorage();
-localStorage.removeItem("sparasannons"); //för rensar de jobb som har sparat
+document.addEventListener("DOMContentLoaded",function() {
+    const sparade =localStorage.getItem("sparasannons");
+   if(sparade){
+    sparasannons =JSON.parse(sparade)
+   }
+    visasparadejobb();
+//    localStorage.removeItem("sparasannons"); //för rensar de jobb som har sparat efter lämnat sida
 });
 
-function loadFormLocalStorage(){ // html sidan är färdigladdad kör loadFormLocalStorage
-    const LocalStorageId= localStorage.getItem("sparasannons")
-    
-    if(LocalStorageId){
-        const jsDate = JSON.parse(LocalStorageId)// för text som java-array
-        jsDate.forEach((id)=>{ // går igenom varje id
-            sparasannons.push(id)// spara i sparasannons
-    });
-    }else {
-        console.log("Ingen sparde annonser hittades")
-    }
-}
+// spara jobb annonser
     function sparasjobb(id) {
+        id = Number(id)
+
     if (!sparasannons.includes(id)) {
         sparasannons.push(id);
 
@@ -246,9 +241,7 @@ function loadFormLocalStorage(){ // html sidan är färdigladdad kör loadFormLo
             JSON.stringify(sparasannons)
         );
 
-        console.log("Annonsen sparades!");
-    } else {
-        console.log("Annonsen är redan sparad!");
+        console.log("Jobb har redan sparat", id);
     }
 }
 
@@ -259,17 +252,17 @@ function visasparadejobb(){
     if(!sparatjobb){
         return;
     }
-    const sparadeId =JSON.parse(
-        localStorage.getItem("sparasannons")
-    ) || [];
 
     sparatjobb.innerHTML ="";
-    if (sparadeId.lenght=== 0){
+    if (sparasannons.lenght=== 0){
         sparatjobb.innerHTML= "<p>Ingen sparde jobb.</p>"
         return;
     }
-    sparadeId.forEach(id => {
-        const jobb = jobs.find(jobb => jobb.id === id);
+    sparasannons.forEach(function (id) {
+        const jobb = jobs.find(function (jobb){
+            return Number(jobb.id)=== Number(id);
+        });
+
         if(jobb){
             sparatjobb.innerHTML += `
             <section class ="jobbobjekt">
@@ -279,25 +272,33 @@ function visasparadejobb(){
              <p>${jobb.kategori}</p>
              <p>${jobb.detalj}</p>
 
-            <button class="ta-bort" data-id=${jobb.id}">Ta bort</button>
+            <button class="ta-bort" data-id="${jobb.id}"> 
+                Ta bort
+            </button>
             </section>
             `;
         }
     });
 }
+// to bort sparat jobb 
 document.addEventListener("click",function(e){
     if (e.target.classList.contains("ta-bort")){
-        const id = nubmer(e.target.dataset.id);
-        sparasannons = sparasannons.filter(
-            jobbId=> jobbId !== id
-        );
+        const id = Number(e.target.dataset.id);
+
+        console.log("Tar bort jobb med id:", id);
+
+        sparasannons = sparasannons.filter(function(jobbId){
+                return Number(jobbId) !== id;
+
+        });
+
         localStorage.setItem(
-            "sparasaanons",JSONstringify(sparasannons)
+            "sparasannons",JSON.stringify(sparasannons)
 
         );
+    visasparadejobb();// visa igen    
     }
 });
-visasparadejobb();
 // visa jobb-detail
 const valtjobb= jobs.find(jobb => jobb.id === valtId);
 const jobbdetail = document.querySelector("#jobb-detail");
