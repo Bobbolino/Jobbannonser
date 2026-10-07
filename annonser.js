@@ -170,24 +170,34 @@ function visajobb(alljobb){
             <p>${jobb.kategori}</p>
             <p>${jobb.detalj}</p>
            
-            <button onclick="sparasjobb(${jobb.id})">Spara annons</button>
+            <button class="spara-jobb" data-id="${jobb.id}">Spara annons</button>
         </Section>
         `;
         // när man använder mus på företag namnet sent går till jobbdetail
-        document.addEventListener("click",function(e){
-            console.log("någon klickades");
+    })
+}
+visajobb(jobs);
 
-            if(e.target.classList.contains("jobbnamn")){// klicka i title.
-                console.log("Jobbnamnet klickades");
-                
-                const id = e.target.dataset.id;
+    
+        document.addEventListener("click",function(e){
+           // console.log("någon klickades");
+
+            if(e.target.classList.contains("spara-jobb")) {// klicka i title.
+                const id =Number(e.target.dataset.id);
+                sparasjobb(id);
+            }
+//klick på jobbnamnet
+            if(e.target.classList.contains("jobbnamn")){
+                const id = Number(e.target.dataset.id);
+
                 localStorage.setItem("valtjobb",id);
                 window.location.href="detailjobb.html"
-            }
-        })
-    });
-}
+            } 
+        }    
+     );  
+    
 visajobb(jobs);// ser 8 jobb i webbsida
+
  const valtId = Number(localStorage.getItem("valtjobb"));
  const jobb = jobs.find(jobb => jobb.id === valtId);
 
@@ -241,7 +251,7 @@ document.addEventListener("DOMContentLoaded",function() {
             JSON.stringify(sparasannons)
         );
 
-        console.log("Jobb har redan sparat", id);
+      //  console.log("Jobb har redan sparat", id);
     }
 }
 
@@ -254,7 +264,7 @@ function visasparadejobb(){
     }
 
     sparatjobb.innerHTML ="";
-    if (sparasannons.lenght=== 0){
+    if (sparasannons.length === 0){
         sparatjobb.innerHTML= "<p>Ingen sparde jobb.</p>"
         return;
     }
@@ -285,7 +295,7 @@ document.addEventListener("click",function(e){
     if (e.target.classList.contains("ta-bort")){
         const id = Number(e.target.dataset.id);
 
-        console.log("Tar bort jobb med id:", id);
+        //console.log("Tar bort jobb med id:", id);
 
         sparasannons = sparasannons.filter(function(jobbId){
                 return Number(jobbId) !== id;
@@ -305,12 +315,12 @@ const jobbdetail = document.querySelector("#jobb-detail");
 
 if (jobbdetail && valtjobb){
     jobbdetail.innerHTML = `
-    <h1>${valtjobb.title}</h1>
+    <h3>${valtjobb.title}</h3>
     <p>Företag: ${valtjobb.företag}</p>
     <p>Ort: ${valtjobb.location}</p>
     <p>Katagori: ${valtjobb.kategori}</p>
 
-    <h2>Om jobbet</h2>
+    <h4>Om jobbet</h4>
     <p>${valtjobb.detalj}</p>
     <p>Omfattning: ${valtjobb.Omfattning}</p>
     <p>Varaktighet: ${valtjobb.Varaktighet}</p>
