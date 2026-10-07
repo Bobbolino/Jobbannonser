@@ -15,7 +15,7 @@ const jobb = [
         titel: "IT Säkerhetsingenjör",
         företag: "SecureTech AB",
         ort: "Stockholm",
-        kategori: "IT Säkerhetsingenjör",
+        kategori: "IT-Säkerhetsingenjör",
         beskrivning: "Vi söker en IT-säkerhetsingenjör som vill arbeta med att skydda system och nätverk."
     },
     {
@@ -23,7 +23,7 @@ const jobb = [
         titel: "IT-säkerhetsansvarig",
         företag: "Nordic Security AB",
         ort: "Uppsala",
-        kategori: "IT-säkerhetsansvarig",
+        kategori: "IT-Säkerhetsansvarig",
         beskrivning: "Du ansvarar för företagets IT-säkerhet och hjälper till att utveckla säkra lösningar."
     },
     {
@@ -31,7 +31,7 @@ const jobb = [
         titel: "IT-säkerhetstekniker",
         företag: "Safe Network AB",
         ort: "Linköping",
-        kategori: "IT-säkerhetstekniker",
+        kategori: "IT-Säkerhetstekniker",
         beskrivning: "Vi söker en IT-säkerhetstekniker som vill arbeta med nätverk, säkerhet och felsökning."
     },
     {
@@ -39,7 +39,7 @@ const jobb = [
         titel: "IT & Supportttekniker",
         företag: "Support Solutions AB",
         ort: "Gotland",
-        kategori: "IT & Supportttekniker",
+        kategori: "IT-Supportttekniker",
         beskrivning: "Du arbetar med IT-support, installation och problemlösning för våra användare."
     },
     {
