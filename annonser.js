@@ -47,7 +47,7 @@ const jobb = [
         titel: "IT-Säkerhetsadministratör",
         företag: "Digital Security AB",
         ort: "Stockholm",
-        kategori: "IT-Säkerhetsadministratör",
+    kategori: "IT-Säkerhetsadministratör",
         beskrivning: "Vi söker en administratör som vill arbeta med behörigheter, säkerhet och IT-system."
     },
     {
@@ -117,7 +117,7 @@ function visaJobb(lista) {
             </button>
 
             <button class="spara-knapp" data-id="${jobbAnnons.id}">
-                Spara
+                spara❤️
             </button>
         `;
 
