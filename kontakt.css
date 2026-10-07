@@ -12,17 +12,9 @@ ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   justify-content: space-evenly;
   min-height: 50px;
   background-color: rgb(49, 68, 194);
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex: 1;
 }
 
 li {
@@ -50,17 +42,35 @@ a:active {
   text-decoration: underline;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+}
+
 .contactcard {
-  width: 500px;
+  width: 1000px;
   max-width: 90%;
   margin-top: 50px;
   margin-bottom: 50px;
+
+  display: flex;
+  flex-direction: row;
+
   box-shadow: 0 4px 8px 0 rgb(49, 68, 194);
   border-radius: 10px;
 }
 
-.contact {
+.contact,
+.adress {
+  width: 50%;
   padding: 20px;
+  box-sizing: border-box;
+}
+
+.contact {
+  border-right: 1px solid lightgray;
 }
 
 .contact label {
@@ -87,9 +97,23 @@ a:active {
   cursor: pointer;
 }
 
+.adress p {
+  margin-top: 10px;
+}
+
 footer {
-  min-height: 50px;
+  min-height: 70px;
   background-color: rgb(49, 68, 194);
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+  padding: 10px;
+  text-align: center;
 }
 
 @media (max-width: 600px) {
@@ -102,17 +126,25 @@ footer {
     margin: 10px 0;
   }
 
+  a:link {
+    font-size: large;
+  }
+
   .contactcard {
     width: 90%;
+    flex-direction: column;
     margin-top: 30px;
     margin-bottom: 30px;
   }
 
-  .contact {
+  .contact,
+  .adress {
+    width: 100%;
     padding: 15px;
   }
 
-  a:link {
-    font-size: large;
+  .contact {
+    border-right: none;
+    border-bottom: 1px solid lightgray;
   }
 }
