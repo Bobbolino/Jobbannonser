@@ -18,7 +18,7 @@ body {
 
 
 header {
-    background-color: rgb(0, 0, 0);
+    background-color: #0a66c2;
 
     border-bottom: 1px solid #ddd;
 }
@@ -40,7 +40,7 @@ nav {
 
 
 .logo {
-    color: #0a66c2;
+    color: black;
 
     margin: 0;
 }
@@ -303,7 +303,7 @@ button:hover {
 /* FOOTER */
 
 footer {
-    background-color: #222;
+    background-color: #0a66c2;
 
     color: white;
 
