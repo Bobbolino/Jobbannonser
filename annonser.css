@@ -98,7 +98,18 @@ main > p {
     margin-bottom: 25px;
 }
 
-
+h2 {
+  color: blue;
+}
+h3{
+  color: blue;
+}
+h4{
+  color: blue;
+}
+.vandetill{
+  color: blue;
+}
 /* ========================================
    FILTER
 ======================================== */
@@ -128,7 +139,7 @@ select:focus {
    JOBBLISTA
 ======================================== */
 
-#jobb-lista {
+#jobb-lista  {
     display: grid;
 
     grid-template-columns: repeat(2, 1fr);
@@ -140,7 +151,7 @@ select:focus {
 
 
 /* Ett kort för varje jobbannons */
-#jobb-lista article {
+.jobbobjekt {
     background-color: white;
 
     padding: 25px;
@@ -255,12 +266,21 @@ button:hover {
 ======================================== */
 
 footer {
-    min-height: 60px;
+   
+  min-height: 70px;
+  background-color: rgb(49, 68, 194);
+  color: white;
 
-    background-color: rgb(49, 68, 194);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    margin-top: auto;
+  gap: 5px;
+  padding: 10px;
+  text-align: center;
 }
+
 
 
 /* ========================================
