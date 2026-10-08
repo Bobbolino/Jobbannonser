@@ -3,67 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobbannonser</title>
+    <title>Jobbstart</title>
+
     <link rel="stylesheet" href="annonser.css">
-    <script href="annonser.js" defer></script>
+    <script src="annonser.js" defer></script>
+
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html">Start</a>
-            <a href="#sökjob">Sök Jobb</a>
-            <a href="kontakt.html">Kontakt </a>
-        </nav>
-        <selection class="headerTitle">
-            <h1>Jobbforyou</h1>
-            <p>Välkommen till våra jobb annonser!</p>
-        </selection>        
+         <ul>
+           <li><a href="index.html">Start</a></li>
+            <li><a href="annonser.html">Sök Jobb</a></li>
+            <li><a href="kontakt.html">Kontakt </a></li>
+         </ul>
+        </nav>    
     </header>
-    <main> 
-         <h2>Lediga jobb i Sverige</h2>
-        <p>Flitera på yrker, Stad eller län</p>
+    <main>
         
-     
-        <section class="stad">
-        <form action="#" method="post">
-           <label for="ort"></label>
-            <select id="ort" namn="land">
-                <option value=" ">Välja ort</option>
-                <option value="stockholm">Stockholm</option>
-                <option value="Södermanlands">Södermansland</option>
-                <option value="Linköping">Linköpin</option>
-                <option value="Gotland">Gotland</option>
+            <h1>Lediga jobb i Sverige</h1>
+            
+            <select id="ort">
+                <option value="">Stad</option>
+                <option value="Linköping">Linköping</option>
+                <option value="Stockholm">Stockholm</option>
+                <option value="Uppsala">Uppsala</option>
             </select>
-        </section>
-        
-        <section class="yrke">
+
             <select id="yrke" namn="yrke">
-                <option value=" ">Yrkeområde</option>
-                <option value="admin">Administration,ekonomi,juridik</option>
-                <option value="data">Data, IT</option>
-                <option value="hälso">Hälso - och sjukvård</option>
+                <option value=" ">Välja Yrkeområde</option>
+                 <option value="IT-Säkerhetsingenjör">IT-Säkerhetsingenjör</option>
+                 <option value="IT-Säkerhetsansvarig">IT-Säkerhetsansvarig</option>
+                 <option value="IT-Säkerhetstekniker">IT-Säkerhetstekniker</option>
+                 <option value="IT-Supportttekniker">IT-Supportttekniker</option>
+                 <option value="IT-Säkerhetsadministratör">IT-Säkerhetsadministratör</option>
             </select>
-        </section>
 
-        <div class="totalplats">
-            <p id="sök jobb"></p>">Patsbanken</a>
-        </div>
-        <section>
-            <nav>
-                <a href="#Ett"><h2>Systemsäkerhetsingenjör inom Funchtional Safety</h2></a>
-            </nav>
-            <p id="företag1">Agile Resources AB</p>
-            <p id="ort">Lingköping</p>
-            <p id="yrke">Säkerhetsingenjör</p>
-            <p id="date">Ansök före 24 nov.2026</p>
-            <button type="submit" >Spara annons</button>
-        </section>
-        </form>
+       <button class="btn" ><a href="spara.html" > 🧡 Spara annoser</a></button>
+        
+        <div id="spardeJobb"></div> <!--jobbet som har sparat-->
+    
+        
+        <div id="jobb-lista"></div> <!--visa 8 jobb-->
 
-        <section id="Ett" >Systemsäkerhetsingenjör inom Funchtional Safety</section>
-        <p>Säkerhetsingenjör</p>
     </main>
-
-    <footer></footer>
+        <br/>
+    <footer> 
+      <p>&copy; 2026 JobbMatch Sverige AB</p>
+      <p>Kontakt: kontakt@jobbmatch.se</p>
+    </footer>
 </body>
 </html>
