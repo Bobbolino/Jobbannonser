@@ -8,31 +8,33 @@
     <script href="annonser.js" defer></script>
 </head>
 <body>
-<header>
-      <nav>
-        <ul>
-          <li><a href="Start">Start</a></li>
-          <li><a href="Sök jobb">Sök jobb</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
+    <header>
+        <nav>
+            <a href="index.html">Start</a>
+            <a href="#sökjob">Sök Jobb</a>
+            <a href="kontakt.html">Kontakt </a>
+        </nav>
+        <selection class="headerTitle">
+            <h1>Jobbforyou</h1>
+            <p>Välkommen till våra jobb annonser!</p>
+        </selection>        
     </header>
-    
     <main> 
-         <h2>Lediga jobb i Sverige</h1>
+         <h2>Lediga jobb i Sverige</h2>
         <p>Flitera på yrker, Stad eller län</p>
-         
-        <selection class="stad">
+        
+     
+        <section class="stad">
         <form action="#" method="post">
            <label for="ort"></label>
             <select id="ort" namn="land">
                 <option value=" ">Välja ort</option>
                 <option value="stockholm">Stockholm</option>
                 <option value="Södermanlands">Södermansland</option>
-                <option value="Uppsala">Uppsala</option>
+                <option value="Linköping">Linköpin</option>
                 <option value="Gotland">Gotland</option>
             </select>
-        </selection>
+        </section>
         
         <section class="yrke">
             <select id="yrke" namn="yrke">
@@ -43,27 +45,25 @@
             </select>
         </section>
 
-        <div class="söker">
-            <nav>
-                 <a href="#söker">Söker jobb</a>
-            </nav>
+        <div class="totalplats">
+            <p id="sök jobb"></p>">Patsbanken</a>
         </div>
-        
-        <section id="söker">
+        <section>
             <nav>
-                <a href="#Senior ASIC Verification Engineer"><h2>Senior ASIC Verification Engineer</h2></a>
+                <a href="#Ett"><h2>Systemsäkerhetsingenjör inom Funchtional Safety</h2></a>
             </nav>
-            
-            <p>ARRY AB</p>
-            <p>Mjukvaruutvecklare<br/>Behovsantällning<br/>Ansök före 24 nov.2026</p>
-            <botton ></botton>
+            <p id="företag1">Agile Resources AB</p>
+            <p id="ort">Lingköping</p>
+            <p id="yrke">Säkerhetsingenjör</p>
+            <p id="date">Ansök före 24 nov.2026</p>
+            <button type="submit" >Spara annons</button>
         </section>
-
         </form>
+
+        <section id="Ett" >Systemsäkerhetsingenjör inom Funchtional Safety</section>
+        <p>Säkerhetsingenjör</p>
     </main>
 
-    
-<footer></footer>
-    
+    <footer></footer>
 </body>
 </html>
