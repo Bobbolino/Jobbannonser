@@ -14,7 +14,7 @@ ul {
   flex-direction: row;
   justify-content: space-evenly;
   min-height: 50px;
-  background-color: rgb(49, 68, 194);
+  background-color: #0a66c2;
 }
 
 li {
@@ -58,7 +58,7 @@ main {
   display: flex;
   flex-direction: row;
 
-  box-shadow: 0 4px 8px 0 rgb(49, 68, 194);
+  box-shadow: 0 4px 8px 0 #0a66c2;
   border-radius: 10px;
 }
 
@@ -103,7 +103,7 @@ main {
 
 footer {
   min-height: 70px;
-  background-color: rgb(49, 68, 194);
+  background-color: #0a66c2;
   color: white;
 
   display: flex;
