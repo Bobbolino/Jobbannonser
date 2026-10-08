@@ -175,7 +175,17 @@ button{
   color: rgb(235, 235, 241);
   background:rgb(49, 68, 194) ;
 } 
+/*jobblist ser bra ut*/
+#jobb-lista{
+  display: grid;
+  background-color:white;
+  padding: 50px;
+  border: 15px solid bisque;
+  gap: 10px;
+  border-radius: 10;
+  box-shadow: 0.2px 8px;
 
+}
 footer {
 min-height: 50px;
 line-height: 1px;
@@ -189,22 +199,14 @@ line-height: 1px;
   padding: 10px;
   text-align: center;
 }
-/*spara.html*/
-#fott{
-  position: fixed;
-  min-height: 70px;
-  background-color: rgb(49, 68, 194);
-  color: white;
-  gap: 5px;
-  padding: 10px;
-  text-align: center;
-}
+
 
 /* för mobil*/
-@media (min-width:367px);
+@media (min-width:367px){
    header{
     display: block;
     }
+  }
   
 
 
