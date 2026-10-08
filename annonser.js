@@ -68,7 +68,7 @@ const jobs=[
         Varaktighet: "6 månader eller längre",
         Anställningsform:"Tillvidare-eller tidsbegränsad anställning",
         Omjobbet:`För vår kunds räkning söker vi nu en Technical Solutions Engineer till ett globalt expertteam i Sundbyberg. 
-        Det här är en mångsidig roll för dig som vill behärska helheten i komplexa system – där du varvar avancerad felsökning och labbtester med tekniska utbildningar och resor till bolagets säljbolag världen över.`,
+        Det här är en mångsidig roll för dig som vill behärska helheten i komplexa system där du varvar avancerad felsökning och labbtester med tekniska utbildningar och resor till bolagets säljbolag världen över.`,
         Följande:`Har en högskoleutbildning inom el, elektronik, data eller datakommunikation.
         Erfarenhet av arbete som ingenjör, företrädesvis inom elektronik eller data.
         Mycket goda kunskaper i både svenska och engelska i tal och skrift.
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded",function() {
     }
 }
 
-// visa de sparade jobb
+// visa de sparade jobb ***lägtill hur många jobb som sparat****
 function visasparadejobb(){
     const sparatjobb= document.querySelector("#sparasjobb");//sparasjobb i spara.html
 
@@ -295,8 +295,6 @@ document.addEventListener("click",function(e){
     if (e.target.classList.contains("ta-bort")){
         const id = Number(e.target.dataset.id);
 
-        //console.log("Tar bort jobb med id:", id);
-
         sparasannons = sparasannons.filter(function(jobbId){
                 return Number(jobbId) !== id;
 
@@ -306,7 +304,7 @@ document.addEventListener("click",function(e){
             "sparasannons",JSON.stringify(sparasannons)
 
         );
-    visasparadejobb();// visa igen    
+    visasparadejobb();// visa jobbigen    
     }
 });
 // visa jobb-detail
