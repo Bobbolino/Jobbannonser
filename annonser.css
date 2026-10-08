@@ -3,75 +3,211 @@
 *::after {
     box-sizing: border-box;
 }
-html {
-    scroll-padding-top: 7rem;
-    scroll-behavior: smooth;
+html{
+  scroll-behavior: smooth;
 }
+
 body {
-    font-family: 'Times New Roman', Times, serif;
-    line-height: 1.6;
-    max-width: 100vw;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
     min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    margin:0;
+    padding: 0;
+    width: 100%;
+   /* overflow: hidden;*/
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px ;
+    line-height: 1.6; 
 }
 
-*{
-margin: 0;
-}
-
-body {
-
-}
- header nav {
-
+ul {
+  margin-top: 0;
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   justify-content: space-evenly;
   min-height: 50px;
- 
-
   background-color: rgb(49, 68, 194);
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex: 1;
 }
 
 li {
   margin: auto;
 }
-
-a:link {
+ul a:link {
   color: white;
   text-decoration: none;
   font-size: x-large;
 }
 
-a:visited {
+ul a:visited {
   color: white;
   text-decoration: none;
 }
 
-
-a:hover {
+ul a:hover {
   color: black;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-a:active {
+ul a:active {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-footer {
+h1 {
+  font-size: 30px;
+  text-align: center;
+  color: rgb(4, 1, 30);
+}
+h2{
+ color:blue;
+}
+h3{
+  color:blue;
+  text-align: center;
+  font-size: 30px;
+}
+h4{
+  color: blue;
+  font-size: 20px;
+}
+
+.btn a {
+ margin-left:auto;
+ display: inline-block;
+ padding: 3px;
+ width:150px;
+ height: 30px;
+ font-size: 15px;
+ background-color:  rgb(49, 68, 194);
+ color: rgb(217, 212, 212);
+ text-decoration:none;
+ border-radius: 15px;
+ position: absolute;
+ top: 80px;
+ right:20px;
+}
+.btn :hover{
+color: rgb(180, 15, 15);
+}
+#ort  {
+ display: block;
+ padding: 15px,30px;
+ font-size: 15px;
+ height: 30px;
+ background-color:  rgb(49, 68, 194);
+ color: rgb(217, 212, 212);
+ text-align: center;
+ border-radius: 10px;
+ position: relative;
+ top: 30px;
+ left:100px;
+}
+#yrke{
+ display: block;
+ padding: 10px,30px;
+ font-size: 15px;
+ height: 30px;
+ background-color:  rgb(49, 68, 194);
+ color: rgb(217, 212, 212);
+ text-align: center;
+ border-radius: 10px;
+ position: relative;
+ top: 0;
+ left:250px;
+} 
+#spardejobb{
+  text-decoration: underline;
+}
+/*detail.html*/
+#tillbak:hover{
+  color: blue;
+}
+#tillbak a {
+ margin-left:auto;
+ display: inline-block;
+ padding: 25px,40px;
+ font-size: 15px;
+ background-color: rgb(49, 68, 194);
+ color: aliceblue;
+ text-decoration:none;
+ border-radius: 10px;
+ position: absolute;
+ top: 80px;
+ right:20px;
+}
+#tillbak{
+ margin-top: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   min-height: 50px;
   background-color: rgb(49, 68, 194);
 }
+#tillbak a:hover{
+  color:black;
+}
+#vandetill a{
+ display:flex;
+ padding: 25px,40px;
+ font-size: 15px;
+ background-color: rgb(49, 68, 194);
+ color: aliceblue;
+ text-decoration:none;
+ border-radius: 10px;
+ position: absolute;
+ top: 80px;
+ right:20px;
+}
+#vandetill{
+ margin-top: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  min-height: 50px;
+  background-color: rgb(49, 68, 194);
+}
+#vandetill a:hover{
+  color: black;
+}
+
+button{
+  color: rgb(235, 235, 241);
+  background:rgb(49, 68, 194) ;
+} 
+
+footer {
+min-height: 50px;
+line-height: 1px;
+  background-color: rgb(49, 68, 194);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  text-align: center;
+}
+/*spara.html*/
+#fott{
+  position: fixed;
+  min-height: 70px;
+  background-color: rgb(49, 68, 194);
+  color: white;
+  gap: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+/* för mobil*/
+@media (min-width:367px);
+   header{
+    display: block;
+    }
+  
+
+
+
+
+
