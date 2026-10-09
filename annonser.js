@@ -151,25 +151,23 @@ const jobs=[
     }
 ];
 
-
+// javascript hittar html-behålare(container)
 const jobblista = document.querySelector("#jobb-lista"); //väljer id jobb lista för att lägg till 8 jobb  
 
- 
-
-function visajobb(alljobb){ 
-
+function visajobb(alljobb){ //alljobb tar emot jobbarrayen
+//kontrollera att behållare finns
     if (!jobblista){ 
 
         return; 
 
     } 
 
+//Behållare töms för att förhindra att gammalt innehåller ligger kvar när funktionen fyller med nya annonser
     jobblista.innerHTML=""; //lägg till innehåll i jobblista 
 
- 
-
-    alljobb.forEach(jobb => { // allajob kalla för jobb och har samma innehåll 
-
+    //Loopen går igenom allla job
+    alljobb.forEach(jobb => { 
+// skapa för att sparas jobb och innehåll 
         jobblista.innerHTML += ` 
 
         <Section class ="jobbobjekt"> 
@@ -184,46 +182,41 @@ function visajobb(alljobb){
 
             <p>${jobb.detalj}</p> 
 
-            <button onclick="sparasjobb(${jobb.id})">Spara annons</button> 
-         
-        <button class="detalj-knapp" data-id="${jobb.id}">Läs mer </button>
-        </Section> 
-
+            
+           <button id="sparas-${jobb.id}" onclick="sparasjobb(${jobb.id})">
+    🩵 Spara annons! </button>
+            <button class="detalj-knapp" data-id="${jobb.id}"> Läs mer ➥ </button>
+        <section>
         `; 
+});
+        
+}   
 
-        // när man använder mus på företag namnet sent går till jobbdetail 
-
+        // klick läsmer 
+        
         document.addEventListener("click",function(e){ 
 
-            console.log("någon klickades"); 
+            //console.log("någon klickades"); 
+ 
+            if(e.target.classList.contains("detalj-knapp")){// klick läsmer. 
 
-            if(e.target.classList.contains("detalj-knapp")){// klicka i title. 
-
-                console.log("Jobbnamnet klickades");  
-
+               // console.log("Jobbnamnet klickades"); 
                 const id = e.target.dataset.id; 
 
                 localStorage.setItem("valtjobb",id); 
 
                 window.location.href="detailjobb.html" 
+                
+            }
 
-            } 
+        }) ;
+visajobb(jobs);// visa alla 8 jobb i webbsidan  
 
-        }) 
-
-    }); 
-
-} 
-
-visajobb(jobs);// ser 8 jobb i webbsida 
-
+//hämtade det valtde jobb by id
  const valtId = Number(localStorage.getItem("valtjobb")); 
 
- const jobb = jobs.find(jobb => jobb.id === valtId); 
+ const jobb = jobs.find(jobb => jobb.id === valtId); // söker första element och kontrollerar om jobbet ID är samma som valtId
 
- 
-
- 
 
 // filter ort och yrke för när man väljer ort och yrke , kommer ett jobb till resultat 
 
@@ -231,19 +224,13 @@ const valjord = document.querySelector("#ort");
 
 const valjyrke = document.querySelector("#yrke"); 
 
- 
-
-function jobbsfilter(){ //skapa jobbsfilter function 
+function jobbsfilter(){ //skapa jobbsfilter function för att väljer stad och yrke
 
     const choosestad= valjord.value; 
 
     const chooseyrke= valjyrke.value.trim(); 
 
- 
-
     const jobbsfilter= jobs.filter(jobb => { 
-
- 
 
         const passaort= 
 
@@ -259,15 +246,12 @@ function jobbsfilter(){ //skapa jobbsfilter function
 
 }); 
 
-    visajobb(jobbsfilter); 
-
-     
-
+    visajobb(jobbsfilter); //yrke och stad som får välja 
 } 
 
-if(valjord && valjyrke){ 
+if(valjord && valjyrke){ // kontrollerar ett vilkor( element väljord, väljyrke)
 
-valjord.addEventListener("change",jobbsfilter); 
+valjord.addEventListener("change",jobbsfilter); //
 
 valjyrke.addEventListener("change", jobbsfilter); 
 
@@ -275,12 +259,11 @@ valjyrke.addEventListener("change", jobbsfilter);
 
  
 
-//spara jobbannonser och ta bort i localstorage 
+//spara jobbannonser 
 
- 
+let sparasannons =[]; // töm array
 
-let sparasannons =[]; 
-
+//hämtar sparade jobb från localstorge
 document.addEventListener("DOMContentLoaded",function() { 
 
     const sparade =localStorage.getItem("sparasannons"); 
@@ -297,21 +280,14 @@ document.addEventListener("DOMContentLoaded",function() {
 
 }); 
 
- 
-
-// spara jobb annonser 
 
     function sparasjobb(id) { 
 
-        id = Number(id) 
-
- 
+        id = Number(id) // omvandlar Id number till ett tal
 
     if (!sparasannons.includes(id)) { 
 
         sparasannons.push(id); 
-
- 
 
         localStorage.setItem( 
 
@@ -320,24 +296,23 @@ document.addEventListener("DOMContentLoaded",function() {
             JSON.stringify(sparasannons) 
 
         ); 
-
- 
-
-        console.log("Jobb har redan sparat", id); 
+    }
+    // gör knapp bytt textcontent och knapp inaktiv efter klicka på
+        const knapp =document.querySelector(`#sparas-${id}`);
+        if (knapp){
+            knapp.textContent ="✓ Redan sparad";
+            knapp.disabled = true;
+        }
+        //console.log("Jobb har redan sparat", id); 
 
     } 
 
-} 
-
  
-
 // visa de sparade jobb 
 
 function visasparadejobb(){ 
 
     const sparatjobb= document.querySelector("#sparasjobb");//sparasjobb i spara.html 
-
- 
 
     if(!sparatjobb){ 
 
@@ -345,11 +320,9 @@ function visasparadejobb(){
 
     } 
 
- 
-
     sparatjobb.innerHTML =""; 
 
-    if (sparasannons.lenght=== 0){ 
+    if (sparasannons.length=== 0){ 
 
         sparatjobb.innerHTML= "<p>Ingen sparde jobb.</p>" 
 
@@ -365,7 +338,6 @@ function visasparadejobb(){
 
         }); 
 
- 
 
         if(jobb){ 
 
@@ -383,13 +355,7 @@ function visasparadejobb(){
 
              <p>${jobb.detalj}</p> 
 
- 
-
-            <button class="ta-bort" data-id="${jobb.id}">  
-
-                Ta bort 
-
-            </button> 
+            <button class="ta-bort" data-id="${jobb.id}"> Ta bort  </button> 
 
             </section> 
 
@@ -401,7 +367,7 @@ function visasparadejobb(){
 
 } 
 
-// to bort sparat jobb  
+// to bort ett sparat jobb  
 
 document.addEventListener("click",function(e){ 
 
@@ -411,25 +377,18 @@ document.addEventListener("click",function(e){
 
  
 
-        console.log("Tar bort jobb med id:", id); 
+       // console.log("Tar bort jobb med id:", id); 
 
  
 
         sparasannons = sparasannons.filter(function(jobbId){ 
 
                 return Number(jobbId) !== id; 
-
- 
-
         }); 
-
- 
 
         localStorage.setItem( 
 
             "sparasannons",JSON.stringify(sparasannons) 
-
- 
 
         ); 
 
@@ -477,14 +436,13 @@ if (jobbdetail && valtjobb){
 
     <p>Arbetsplatsen: ${valtjobb.Arbetsplatsen}</p> 
 
-     
 
-    <a href="${valtjobb.url}" target="_blank"> 
+    <a href="${valtjobb.url}" target="_blank" rel="noopener noreferrer"> 
 
-     <button ckick="valtjob.title"${valtjobb.title} >Ansök via extern webbplats</button>  
+    <button> ➤ Ansök via extern webbplats</button> </a>
 
       
 
      ` 
 
-}
+} 
