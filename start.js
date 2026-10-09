@@ -75,7 +75,7 @@ loginForm.addEventListener("submit", function(event) {
 
         setTimeout(function() {
 
-            window.location.href = "jobb.html";
+            window.location.href = "annonser.html";
 
         }, 1000);
 

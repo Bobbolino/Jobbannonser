@@ -151,184 +151,298 @@ const jobs=[
     }
 ];
 
+// javascript hittar html-behålare(container)
+const jobblista = document.querySelector("#jobb-lista"); //väljer id jobb lista för att lägg till 8 jobb  
 
+function visajobb(alljobb){ //alljobb tar emot jobbarrayen
+//kontrollera att behållare finns
+    if (!jobblista){ 
 
-const jobblista = document.querySelector("#jobb-lista"); //väljer id jobb lista för att lägg till 8 jobb 
+        return; 
 
-function visajobb(alljobb){
-    if (!jobblista){
-        return;
-    }
-    jobblista.innerHTML=""; //lägg till innehåll i jobblista
+    } 
 
-    alljobb.forEach(jobb => { // allajob kalla för jobb och har samma innehåll
-        jobblista.innerHTML += `
-        <Section class ="jobbobjekt">
-            <h2 class="jobbnamn" data-id="${jobb.id}">${jobb.title}</h2>
-            <p>${jobb.företag}</p>
-            <p>${jobb.location}</p>
-            <p>${jobb.kategori}</p>
-            <p>${jobb.detalj}</p>
-           
-            <button class="spara-jobb" data-id="${jobb.id}">Spara annons</button>
-        </Section>
-        `;
-        // när man använder mus på företag namnet sent går till jobbdetail
-    })
-}
-visajobb(jobs);
+//Behållare töms för att förhindra att gammalt innehåller ligger kvar när funktionen fyller med nya annonser
+    jobblista.innerHTML=""; //lägg till innehåll i jobblista 
 
-    
-        document.addEventListener("click",function(e){
-           // console.log("någon klickades");
+    //Loopen går igenom allla job
+    alljobb.forEach(jobb => { 
+// skapa för att sparas jobb och innehåll 
+        jobblista.innerHTML += ` 
 
-            if(e.target.classList.contains("spara-jobb")) {// klicka i title.
-                const id =Number(e.target.dataset.id);
-                sparasjobb(id);
+        <Section class ="jobbobjekt"> 
+
+            <h2 class="jobbnamn" data-id="${jobb.id}">${jobb.title}</h2> 
+
+            <p>${jobb.företag}</p> 
+
+            <p>${jobb.location}</p> 
+
+            <p>${jobb.kategori}</p> 
+
+            <p>${jobb.detalj}</p> 
+
+            
+           <button id="sparas-${jobb.id}" onclick="sparasjobb(${jobb.id})">
+    🩵 Spara annons! </button>
+            <button class="detalj-knapp" data-id="${jobb.id}"> Läs mer ➥ </button>
+        <section>
+        `; 
+});
+        
+}   
+
+        // klick läsmer 
+        
+        document.addEventListener("click",function(e){ 
+
+            //console.log("någon klickades"); 
+ 
+            if(e.target.classList.contains("detalj-knapp")){// klick läsmer. 
+
+               // console.log("Jobbnamnet klickades"); 
+                const id = e.target.dataset.id; 
+
+                localStorage.setItem("valtjobb",id); 
+
+                window.location.href="detailjobb.html" 
+                
             }
-//klick på jobbnamnet
-            if(e.target.classList.contains("jobbnamn")){
-                const id = Number(e.target.dataset.id);
 
-                localStorage.setItem("valtjobb",id);
-                window.location.href="detailjobb.html"
-            } 
-        }    
-     );  
-    
-visajobb(jobs);// ser 8 jobb i webbsida
+        }) ;
+visajobb(jobs);// visa alla 8 jobb i webbsidan  
 
- const valtId = Number(localStorage.getItem("valtjobb"));
- const jobb = jobs.find(jobb => jobb.id === valtId);
+//hämtade det valtde jobb by id
+ const valtId = Number(localStorage.getItem("valtjobb")); 
+
+ const jobb = jobs.find(jobb => jobb.id === valtId); // söker första element och kontrollerar om jobbet ID är samma som valtId
 
 
-// filter ort och yrke för när man väljer ort och yrke , kommer ett jobb till resultat
-const valjord = document.querySelector("#ort");
-const valjyrke = document.querySelector("#yrke");
+// filter ort och yrke för när man väljer ort och yrke , kommer ett jobb till resultat 
 
-function jobbsfilter(){ //skapa jobbsfilter function
-    const choosestad= valjord.value;
-    const chooseyrke= valjyrke.value;
+const valjord = document.querySelector("#ort"); 
 
-    const jobbsfilter= jobs.filter(jobb => {
+const valjyrke = document.querySelector("#yrke"); 
 
-        const passaort=
-            choosestad ==="" || jobb.location === choosestad; //väljer location = stad
-        const passayrke =
-            chooseyrke ==="" || jobb.kategori === chooseyrke; // väljer yrke 
+function jobbsfilter(){ //skapa jobbsfilter function för att väljer stad och yrke
 
-        return passaort && passayrke;  // väljer ort och yrke sent få title jobb som matcha 
-});
-    visajobb(jobbsfilter);
-    
-}
-if(valjord && valjyrke){
-valjord.addEventListener("change",jobbsfilter);
-valjyrke.addEventListener("change", jobbsfilter);
-}
+    const choosestad= valjord.value; 
 
-//spara jobbannonser och ta bort i localstorage
+    const chooseyrke= valjyrke.value.trim(); 
 
-let sparasannons =[];
-document.addEventListener("DOMContentLoaded",function() {
-    const sparade =localStorage.getItem("sparasannons");
-   if(sparade){
-    sparasannons =JSON.parse(sparade)
-   }
-    visasparadejobb();
-//    localStorage.removeItem("sparasannons"); //för rensar de jobb som har sparat efter lämnat sida
-});
+    const jobbsfilter= jobs.filter(jobb => { 
 
-// spara jobb annonser
-    function sparasjobb(id) {
-        id = Number(id)
+        const passaort= 
 
-    if (!sparasannons.includes(id)) {
-        sparasannons.push(id);
+            choosestad ==="" || jobb.location === choosestad; //väljer location = stad 
 
-        localStorage.setItem(
-            "sparasannons",
-            JSON.stringify(sparasannons)
-        );
+        const passayrke = 
 
-      //  console.log("Jobb har redan sparat", id);
+            chooseyrke ==="" || jobb.kategori === chooseyrke; // väljer yrke  
+
+ 
+
+        return passaort && passayrke;  // väljer ort och yrke sent få title jobb som matcha  
+
+}); 
+
+    visajobb(jobbsfilter); //yrke och stad som får välja 
+} 
+
+if(valjord && valjyrke){ // kontrollerar ett vilkor( element väljord, väljyrke)
+
+valjord.addEventListener("change",jobbsfilter); //
+
+valjyrke.addEventListener("change", jobbsfilter); 
+
+} 
+
+ 
+
+//spara jobbannonser 
+
+let sparasannons =[]; // töm array
+
+//hämtar sparade jobb från localstorge
+document.addEventListener("DOMContentLoaded",function() { 
+
+    const sparade =localStorage.getItem("sparasannons"); 
+
+   if(sparade){ 
+
+    sparasannons =JSON.parse(sparade) 
+
+   } 
+
+    visasparadejobb(); 
+
+//    localStorage.removeItem("sparasannons"); //för rensar de jobb som har sparat efter lämnat sida 
+
+}); 
+
+
+    function sparasjobb(id) { 
+
+        id = Number(id) // omvandlar Id number till ett tal
+
+    if (!sparasannons.includes(id)) { 
+
+        sparasannons.push(id); 
+
+        localStorage.setItem( 
+
+            "sparasannons", 
+
+            JSON.stringify(sparasannons) 
+
+        ); 
     }
-}
-
-// visa de sparade jobb ***lägtill hur många jobb som sparat****
-function visasparadejobb(){
-    const sparatjobb= document.querySelector("#sparasjobb");//sparasjobb i spara.html
-
-    if(!sparatjobb){
-        return;
-    }
-
-    sparatjobb.innerHTML ="";
-    if (sparasannons.length === 0){
-        sparatjobb.innerHTML= "<p>Ingen sparde jobb.</p>"
-        return;
-    }
-    sparasannons.forEach(function (id) {
-        const jobb = jobs.find(function (jobb){
-            return Number(jobb.id)=== Number(id);
-        });
-
-        if(jobb){
-            sparatjobb.innerHTML += `
-            <section class ="jobbobjekt">
-             <h2>${jobb.title}</h2>
-             <p>${jobb.företag}</p>
-             <p>${jobb.location}</p>
-             <p>${jobb.kategori}</p>
-             <p>${jobb.detalj}</p>
-
-            <button class="ta-bort" data-id="${jobb.id}"> 
-                Ta bort
-            </button>
-            </section>
-            `;
+    // gör knapp bytt textcontent och knapp inaktiv efter klicka på
+        const knapp =document.querySelector(`#sparas-${id}`);
+        if (knapp){
+            knapp.textContent ="✓ Redan sparad";
+            knapp.disabled = true;
         }
-    });
-}
-// to bort sparat jobb 
-document.addEventListener("click",function(e){
-    if (e.target.classList.contains("ta-bort")){
-        const id = Number(e.target.dataset.id);
+        //console.log("Jobb har redan sparat", id); 
 
-        sparasannons = sparasannons.filter(function(jobbId){
-                return Number(jobbId) !== id;
+    } 
 
-        });
+ 
+// visa de sparade jobb 
 
-        localStorage.setItem(
-            "sparasannons",JSON.stringify(sparasannons)
+function visasparadejobb(){ 
 
-        );
-    visasparadejobb();// visa jobbigen    
-    }
-});
-// visa jobb-detail
-const valtjobb= jobs.find(jobb => jobb.id === valtId);
-const jobbdetail = document.querySelector("#jobb-detail");
+    const sparatjobb= document.querySelector("#sparasjobb");//sparasjobb i spara.html 
 
-if (jobbdetail && valtjobb){
-    jobbdetail.innerHTML = `
-    <h3>${valtjobb.title}</h3>
-    <p>Företag: ${valtjobb.företag}</p>
-    <p>Ort: ${valtjobb.location}</p>
-    <p>Katagori: ${valtjobb.kategori}</p>
+    if(!sparatjobb){ 
 
-    <h4>Om jobbet</h4>
-    <p>${valtjobb.detalj}</p>
-    <p>Omfattning: ${valtjobb.Omfattning}</p>
-    <p>Varaktighet: ${valtjobb.Varaktighet}</p>
-    <p>Anställningsform: ${valtjobb.Anställningsform}</p>
-    <p>Omjobbet: ${valtjobb.Omjobbet}</p>
-    <p>Följande krav: ${valtjobb.Följande}</p>
-    <p>Arbetsplatsen: ${valtjobb.Arbetsplatsen}</p>
-    
-    <a href="${valtjobb.url}" target="_blank">
-     <button ckick="valtjob.title"${valtjobb.title} >Ansök via extern webbplats</button> 
-     
-     `
-}
+        return; 
+
+    } 
+
+    sparatjobb.innerHTML =""; 
+
+    if (sparasannons.length=== 0){ 
+
+        sparatjobb.innerHTML= "<p>Ingen sparde jobb.</p>" 
+
+        return; 
+
+    } 
+
+    sparasannons.forEach(function (id) { 
+
+        const jobb = jobs.find(function (jobb){ 
+
+            return Number(jobb.id)=== Number(id); 
+
+        }); 
+
+
+        if(jobb){ 
+
+            sparatjobb.innerHTML += ` 
+
+            <section class ="jobbobjekt"> 
+
+             <h2>${jobb.title}</h2> 
+
+             <p>${jobb.företag}</p> 
+
+             <p>${jobb.location}</p> 
+
+             <p>${jobb.kategori}</p> 
+
+             <p>${jobb.detalj}</p> 
+
+            <button class="ta-bort" data-id="${jobb.id}"> Ta bort  </button> 
+
+            </section> 
+
+            `; 
+
+        } 
+
+    }); 
+
+} 
+
+// to bort ett sparat jobb  
+
+document.addEventListener("click",function(e){ 
+
+    if (e.target.classList.contains("ta-bort")){ 
+
+        const id = Number(e.target.dataset.id); 
+
+ 
+
+       // console.log("Tar bort jobb med id:", id); 
+
+ 
+
+        sparasannons = sparasannons.filter(function(jobbId){ 
+
+                return Number(jobbId) !== id; 
+        }); 
+
+        localStorage.setItem( 
+
+            "sparasannons",JSON.stringify(sparasannons) 
+
+        ); 
+
+    visasparadejobb();// visa igen     
+
+    } 
+
+}); 
+
+// visa jobb-detail 
+
+const valtjobb= jobs.find(jobb => jobb.id === valtId); 
+
+const jobbdetail = document.querySelector("#jobb-detail"); 
+
+ 
+
+if (jobbdetail && valtjobb){ 
+
+    jobbdetail.innerHTML = ` 
+
+    <h1>${valtjobb.title}</h1> 
+
+    <p>Företag: ${valtjobb.företag}</p> 
+
+    <p>Ort: ${valtjobb.location}</p> 
+
+    <p>Katagori: ${valtjobb.kategori}</p> 
+
+ 
+
+    <h2>Om jobbet</h2> 
+
+    <p>${valtjobb.detalj}</p> 
+
+    <p>Omfattning: ${valtjobb.Omfattning}</p> 
+
+    <p>Varaktighet: ${valtjobb.Varaktighet}</p> 
+
+    <p>Anställningsform: ${valtjobb.Anställningsform}</p> 
+
+    <p>Omjobbet: ${valtjobb.Omjobbet}</p> 
+
+    <p>Följande krav: ${valtjobb.Följande}</p> 
+
+    <p>Arbetsplatsen: ${valtjobb.Arbetsplatsen}</p> 
+
+
+    <a href="${valtjobb.url}" target="_blank" rel="noopener noreferrer"> 
+
+    <button> ➤ Ansök via extern webbplats</button> </a>
+
+      
+
+     ` 
+
+} 
