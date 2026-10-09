@@ -8,42 +8,40 @@ body {
   flex-direction: column;
 }
 
-ul {
+header nav{
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   min-height: 50px;
   background-color: rgb(49, 68, 194);
-}
-
-li {
   margin: auto;
 }
 
-a:link {
+nav a:link {
   color: white;
   text-decoration: none;
   font-size: x-large;
 }
 
-a:visited {
+nav a:visited {
   color: white;
   text-decoration: none;
 }
 
-a:hover {
+nav a:hover {
   color: black;
   text-decoration: underline;
 }
 
-a:active {
+nav a:active {
   color: white;
   text-decoration: underline;
 }
 
 main {
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: flex-start;
   flex: 1;
