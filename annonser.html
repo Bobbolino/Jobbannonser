@@ -3,67 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobbannonser</title>
+    <title>Jobbstart</title>
+
     <link rel="stylesheet" href="annonser.css">
-    <script href="annonser.js" defer></script>
+    <script src="annonser.js" defer></script>
+
 </head>
 <body>
-<header>
-      <nav>
-        <ul>
-          <li><a href="Start">Start</a></li>
-          <li><a href="Sök jobb">Sök jobb</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
+    <header>
+        <nav>
+         <ul>
+           <li><a href="index.html">Start</a></li>
+            <li><a href="annonser.html">Sök Jobb</a></li>
+            <li><a href="kontakt.html">Kontakt </a></li>
+         </ul>
+        </nav>    
     </header>
-    
-    <main> 
-         <h2>Lediga jobb i Sverige</h1>
-        <p>Flitera på yrker, Stad eller län</p>
-         
-        <selection class="stad">
-        <form action="#" method="post">
-           <label for="ort"></label>
-            <select id="ort" namn="land">
-                <option value=" ">Välja ort</option>
-                <option value="stockholm">Stockholm</option>
-                <option value="Södermanlands">Södermansland</option>
-                <option value="Uppsala">Uppsala</option>
-                <option value="Gotland">Gotland</option>
-            </select>
-        </selection>
+    <main>
         
-        <section class="yrke">
-            <select id="yrke" namn="yrke">
-                <option value=" ">Yrkeområde</option>
-                <option value="admin">Administration,ekonomi,juridik</option>
-                <option value="data">Data, IT</option>
-                <option value="hälso">Hälso - och sjukvård</option>
-            </select>
-        </section>
-
-        <div class="söker">
-            <nav>
-                 <a href="#söker">Söker jobb</a>
-            </nav>
-        </div>
-        
-        <section id="söker">
-            <nav>
-                <a href="#Senior ASIC Verification Engineer"><h2>Senior ASIC Verification Engineer</h2></a>
-            </nav>
+            <h1>Lediga jobb i Sverige</h1>
             
-            <p>ARRY AB</p>
-            <p>Mjukvaruutvecklare<br/>Behovsantällning<br/>Ansök före 24 nov.2026</p>
-            <botton ></botton>
-        </section>
+            <select id="ort">
+                <option value="">Stad</option>
+                <option value="Linköping">Linköping</option>
+                <option value="Stockholm">Stockholm</option>
+                <option value="Uppsala">Uppsala</option>
+            </select>
 
-        </form>
+            <select id="yrke" namn="yrke">
+                <option value=" ">Välja Yrkeområde</option>
+                 <option value="IT-Säkerhetsingenjör">IT-Säkerhetsingenjör</option>
+                 <option value="IT-Säkerhetsansvarig">IT-Säkerhetsansvarig</option>
+                 <option value="IT-Säkerhetstekniker">IT-Säkerhetstekniker</option>
+                 <option value="IT-Supportttekniker">IT-Supportttekniker</option>
+                 <option value="IT-Säkerhetsadministratör">IT-Säkerhetsadministratör</option>
+            </select>
+
+       <button class="btn" ><a href="spara.html" > 🧡 Spara annoser</a></button>
+        
+        <div id="spardeJobb"></div> <!--jobbet som har sparat-->
+    
+        
+        <div id="jobb-lista"></div> <!--visa 8 jobb-->
+
     </main>
-
-    
-<footer></footer>
-    
+        <br/>
+    <footer> 
+      <p>&copy; 2026 JobbMatch Sverige AB</p>
+      <p>Kontakt: kontakt@jobbmatch.se</p>
+    </footer>
 </body>
 </html>
