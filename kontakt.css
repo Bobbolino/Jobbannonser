@@ -8,13 +8,6 @@ body {
   flex-direction: column;
 }
 
-/* Navigering */
-
-header nav {
-  background-color: rgb(49, 68, 194);
-  min-height: 50px;
-}
-
 header nav ul {
   list-style-type: none;
   display: flex;
@@ -22,6 +15,7 @@ header nav ul {
   justify-content: space-evenly;
   align-items: center;
   min-height: 50px;
+  background-color: rgb(49, 68, 194);
   padding: 0;
 }
 
