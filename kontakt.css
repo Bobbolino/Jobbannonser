@@ -44,6 +44,8 @@ nav a:active {
   text-decoration: underline;
 }
 
+/* Huvudinnehåll */
+
 main {
   display: flex;
   text-align: center;
@@ -51,6 +53,8 @@ main {
   align-items: flex-start;
   flex: 1;
 }
+
+/* Kontaktkort */
 
 .contactcard {
   width: 1000px;
@@ -104,6 +108,8 @@ main {
   margin-top: 10px;
 }
 
+/* Footer */
+
 footer {
   min-height: 70px;
   background-color: rgb(49, 68, 194);
@@ -119,17 +125,19 @@ footer {
   text-align: center;
 }
 
+/* Mobilanpassning */
+
 @media (max-width: 600px) {
-  ul {
+  header nav ul {
     flex-direction: column;
     align-items: center;
   }
 
-  li {
+  header nav li {
     margin: 10px 0;
   }
 
-  a:link {
+  nav a:link {
     font-size: large;
   }
 
