@@ -12,7 +12,6 @@
 
   <body>
     <header>
-
       <nav>
         <h1 class="logo">JobbMatch</h1>
         <ul>
@@ -25,46 +24,59 @@
     </header>
 
     <main>
+           
       <div class="contactcard">
+               
         <section class="contact">
+                   
           <h2>Kontakta oss</h2>
-
+                   
           <hr />
-          <br />
-          <form>
-            <label for="name">För- och efternamn</label>
-            <input type="text" id="name" name="name" />
-
-            <label for="email">E-post</label>
-            <input type="email" id="email" name="email" />
-
-            <label for="message">Meddelande</label>
-            <textarea id="message" name="message"></textarea>
-
-            <button type="submit">Skicka</button>
+                    <br />
+                   
+          <!-- Tillagt ID för JavaScript -->
+                   
+          <form id="contactForm">
+                        <label for="name">För- och efternamn</label>            
+            <input type="text" id="name" name="name" required />            
+            <label for="email">E-post</label>            
+            <input type="email" id="email" name="email" required />            
+            <label for="message">Meddelande</label>            
+            <textarea id="message" name="message" required></textarea>          
+              <button type="submit">Skicka</button>          
           </form>
+                   
+          <!-- NYTT: Här visas bekräftelsen -->
+                   
+          <p id="confirmation" role="status" aria-live="polite"></p>
+                 
         </section>
-
+               
         <section class="adress">
+                   
           <h2>Våra kontaktuppgifter</h2>
-
+                   
           <hr />
-          <br />
-
+                    <br />
+                   
           <p><strong>JobbMatch Sverige AB</strong></p>
+                   
           <p>Karriärvägen 8</p>
+                   
           <p>113 45 Stockholm</p>
-
-          <br />
-
+                    <br />
+                   
           <p>Telefon: 08-410 82 300</p>
+                   
           <p>E-post: kontakt@jobbmatch.se</p>
-
-          <br />
-
+                    <br />
+                   
           <p>Öppettider: Mån–Fre 08:00–17:00</p>
+                 
         </section>
+             
       </div>
+         
     </main>
 
     <footer>
