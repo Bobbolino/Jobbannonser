@@ -3,46 +3,64 @@
 }
 
 body {
+  font-family: 'Times New Roman', Times, serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
+header {
+    background-color: blue;
 
-header nav ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  min-height: 50px;
-  background-color: rgb(49, 68, 194);
-  padding: 0;
+    border-bottom: 1px solid #ddd;
 }
 
-header nav li {
-  margin: auto;
+
+nav {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 15px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
 }
 
-nav a:link {
-  color: white;
-  text-decoration: none;
-  font-size: x-large;
+
+.logo {
+    color:white;
+
+    margin: 0;
 }
 
-nav a:visited {
-  color: white;
-  text-decoration: none;
+
+nav ul {
+    display: flex;
+
+    list-style: none;
+
+    gap: 25px;
+
+    margin: 0;
+
+    padding: 0;
 }
+
+
+nav a {
+    text-decoration: none;
+
+    color:white;
+}
+
 
 nav a:hover {
-  color: black;
-  text-decoration: underline;
-}
-
-nav a:active {
-  color: white;
-  text-decoration: underline;
-}
+    color: #0a66c2;
+}/*
+/*
 
 /* Huvudinnehåll */
 
