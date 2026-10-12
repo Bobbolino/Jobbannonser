@@ -8,13 +8,18 @@ body {
   flex-direction: column;
 }
 
-header nav{
+header nav ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
   min-height: 50px;
   background-color: rgb(49, 68, 194);
+  padding: 0;
+}
+
+header nav li {
   margin: auto;
 }
 
@@ -113,7 +118,6 @@ footer {
   padding: 10px;
   text-align: center;
 }
-
 
 @media (max-width: 600px) {
   ul {
