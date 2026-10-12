@@ -2,23 +2,20 @@
 
 * {
     box-sizing: border-box;
+    
 }
 
 body {
     margin: 0;
 
-    font-family: Arial, sans-serif;
+    font-family:'Times New Roman', Times, serif ;
 
     background-color: #f3f6f8;
 
-    color: #222;
+    color: blue;
 }
-
-
-
-
 header {
-    background-color: #0a66c2;
+    background-color: blue;
 
     border-bottom: 1px solid #ddd;
 }
@@ -40,7 +37,7 @@ nav {
 
 
 .logo {
-    color: black;
+    color:white;
 
     margin: 0;
 }
@@ -62,13 +59,14 @@ nav ul {
 nav a {
     text-decoration: none;
 
-    color: #333;
+    color:white;
 }
 
 
 nav a:hover {
     color: #0a66c2;
-}
+}/*
+
 
 
 
@@ -302,14 +300,19 @@ button:hover {
 
 /* FOOTER */
 
+
 footer {
-    background-color: #0a66c2;
 
-    color: white;
+  min-height: 50px;
+  background-color: rgb(49, 68, 194);
+  color:white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    text-align: center;
-
-    padding: 25px;
+  gap: 5px;
+  padding: 10px;
+  text-align: center;
 }
 
 

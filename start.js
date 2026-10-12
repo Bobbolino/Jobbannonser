@@ -21,7 +21,14 @@ registerForm.addEventListener("submit", function(event) {
 
     const email = document.getElementById("registerEmail").value;
 
-    const password = document.getElementById("registerPassword").value;
+    const password = document.getElementById("registerPassword").value;const savedEmail = localStorage.getItem("email");
+
+if (savedEmail && email.trim().toLowerCase() === savedEmail.trim().toLowerCase()) {
+    document.getElementById("registerMessage").textContent =
+        "Den här e-postadressen är redan registrerad.";
+    return;
+}
+
 
 
     // Sparar informationen i localStorage
@@ -54,6 +61,7 @@ loginForm.addEventListener("submit", function(event) {
     const email = document.getElementById("loginEmail").value;
 
     const password = document.getElementById("loginPassword").value;
+    
 
 
     // Hämtar sparad information
@@ -61,6 +69,7 @@ loginForm.addEventListener("submit", function(event) {
     const savedEmail = localStorage.getItem("email");
 
     const savedPassword = localStorage.getItem("password");
+    
 
 
     // Kontrollerar om uppgifterna stämmer

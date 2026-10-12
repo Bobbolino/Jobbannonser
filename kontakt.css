@@ -3,41 +3,66 @@
 }
 
 body {
+  font-family: 'Times New Roman', Times, serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
+header {
+    background-color: blue;
 
-header nav{
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  min-height: 50px;
-  background-color: rgb(49, 68, 194);
-  margin: auto;
+    border-bottom: 1px solid #ddd;
 }
 
-nav a:link {
-  color: white;
-  text-decoration: none;
-  font-size: x-large;
+
+nav {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 15px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
 }
 
-nav a:visited {
-  color: white;
-  text-decoration: none;
+
+.logo {
+    color:white;
+
+    margin: 0;
 }
+
+
+nav ul {
+    display: flex;
+
+    list-style: none;
+
+    gap: 25px;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+nav a {
+    text-decoration: none;
+
+    color:white;
+}
+
 
 nav a:hover {
-  color: black;
-  text-decoration: underline;
-}
+    color: #0a66c2;
+}/*
+/*
 
-nav a:active {
-  color: white;
-  text-decoration: underline;
-}
+/* Huvudinnehåll */
 
 main {
   display: flex;
@@ -46,6 +71,8 @@ main {
   align-items: flex-start;
   flex: 1;
 }
+
+/* Kontaktkort */
 
 .contactcard {
   width: 1000px;
@@ -99,6 +126,8 @@ main {
   margin-top: 10px;
 }
 
+/* Footer */
+
 footer {
   min-height: 70px;
   background-color: rgb(49, 68, 194);
@@ -114,18 +143,19 @@ footer {
   text-align: center;
 }
 
+/* Mobilanpassning */
 
 @media (max-width: 600px) {
-  ul {
+  header nav ul {
     flex-direction: column;
     align-items: center;
   }
 
-  li {
+  header nav li {
     margin: 10px 0;
   }
 
-  a:link {
+  nav a:link {
     font-size: large;
   }
 

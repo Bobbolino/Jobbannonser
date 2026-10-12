@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded",function() {
     sparasannons =JSON.parse(sparade) 
 
    } 
-
+     
     visasparadejobb(); 
 
 //    localStorage.removeItem("sparasannons"); //för rensar de jobb som har sparat efter lämnat sida 
@@ -366,8 +366,8 @@ function visasparadejobb(){
     }); 
 
 } 
-
-// to bort ett sparat jobb  
+      
+// ta bort ett sparat jobb  
 
 document.addEventListener("click",function(e){ 
 

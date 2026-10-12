@@ -22,7 +22,7 @@ Projektet är byggt med:
 
 1. Klona projektet från GitHub.
 2. Öppna projektmappen i Visual Studio Code.
-3. Öppna `start.html` i webbläsaren.
+3. Öppna `index.html` i webbläsaren.
 
 ## Utvecklare
 
